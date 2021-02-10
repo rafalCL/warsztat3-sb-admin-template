@@ -8,5 +8,23 @@
     <artifactId>MyFirstProject</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <packaging>war</packaging>
+
+    <properties>
+        <maven.project.source>11</maven.project.source>
+        <maven.project.target>11</maven.project.target>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
 
 </project>
