@@ -11,8 +11,8 @@
     <packaging>war</packaging>
 
     <properties>
-        <maven.project.source>11</maven.project.source>
-        <maven.project.target>11</maven.project.target>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
     </properties>
 
     <dependencies>
