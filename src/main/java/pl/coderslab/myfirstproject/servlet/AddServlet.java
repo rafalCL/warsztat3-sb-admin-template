@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "TemplateServlet", urlPatterns = "/template")
-public class TemplateServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/add")
+public class AddServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/template/list.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/template/add.jsp").forward(request, response);
     }
 }

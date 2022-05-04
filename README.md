@@ -1,1 +1,1 @@
-# MyFirstProject
+# warsztat3-sb-admin-template
