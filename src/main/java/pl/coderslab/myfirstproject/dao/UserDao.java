@@ -11,11 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao {
+    private final Connection connection;
+
+    public UserDao(Connection connection) {
+        this.connection = connection;
+    }
+
     public List<User> readAll() throws SQLException {
         List<User> result = new ArrayList<>();
 
-        try(Connection c = DbUtil.getConnection();
-            PreparedStatement ps = c.prepareStatement("SELECT id, userName, password, email FROM users;");
+        try(PreparedStatement ps = connection.prepareStatement("SELECT id, userName, password, email FROM users;");
             ResultSet rs = ps.executeQuery()){
             while(rs.next()){
                 result.add(new User(rs.getInt("id"), rs.getString("userName"),
@@ -24,5 +29,19 @@ public class UserDao {
         }
 
         return result;
+    }
+
+    public User readById(int id) throws SQLException {
+        try(PreparedStatement ps = connection.prepareStatement("SELECT id, userName, password, email FROM users WHERE id = ?;")) {
+            ps.setInt(1, id);
+            try(ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new User(rs.getInt("id"), rs.getString("userName"),
+                            rs.getString("email"), rs.getString("password"));
+                }
+            }
+        }
+
+        throw new SQLException("Data not present for id="+id);
     }
 }
